@@ -1,4 +1,5 @@
 {
-  "_note": "Manual list of sold branding slots, used as well as the automatic one. Format: championship:slot. Championships: british, saudi, ft4, cez. Slots: carnose, carchassis, carlowerpod, sidepod (Principal), helmetleft, helmetright. Suit chest logos are shared and not limited here.",
-  "sold": []
+  "_note": "Manual list of sold branding slots, used as well as the automatic one. Format: championship:slot. Championships: british, saudi, ft4, cez. Slots: carnose, carchassis, carlowerpod, sidepod (Principal), helmetleft, helmetright. Suit chest logos are shared and not limited here. To free a spot again after a refund, add it to \"released\".",
+  "sold": [],
+  "released": []
 }

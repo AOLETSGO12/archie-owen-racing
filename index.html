@@ -910,7 +910,12 @@ let SOLD = new Set();
 Promise.allSettled([
   fetch("/.netlify/functions/availability", { cache: "no-store" }).then(r => r.ok ? r.json() : { sold: [] }),
   fetch("/sold.json", { cache: "no-store" }).then(r => r.ok ? r.json() : { sold: [] }),
-]).then(rs => { rs.forEach(r => r.status === "fulfilled" && (r.value.sold || []).forEach(x => SOLD.add(x))); update(); });
+]).then(rs => {
+  rs.forEach(r => r.status === "fulfilled" && (r.value.sold || []).forEach(x => SOLD.add(x)));
+  /* sold.json "released" frees a spot again, e.g. after a refund */
+  rs.forEach(r => r.status === "fulfilled" && (r.value.released || []).forEach(x => SOLD.delete(x)));
+  update();
+});
 const champsFor = key => key === "full" ? ["british", "saudi", "ft4", "cez"] : [key];
 const isFree = (key, opt) => champsFor(key).every(c => opt.slots.every(sl => !SOLD.has(c + ":" + sl)));
 const fmt = n => "£" + n.toLocaleString("en-GB");
