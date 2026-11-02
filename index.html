@@ -378,6 +378,21 @@ h3.d.sub { margin-top: 40px; font-size: 22px; }
 .checkout .hp { position: absolute; left: -9999px; }
 @media (max-width: 1000px) { .buy { grid-template-columns: 1fr; } }
 @media (max-width: 600px) { .checkout { grid-template-columns: 1fr; } .buy { padding: 22px; } }
+
+.ig-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; }
+.ig-follow { display: inline-flex; align-items: center; gap: 10px; }
+.ig-row { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(240px, 300px); gap: 16px; margin-top: 32px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 12px; scrollbar-width: thin; }
+.ig-card { position: relative; display: block; aspect-ratio: 4 / 5.6; border-radius: 18px; overflow: hidden; scroll-snap-align: start; background: var(--bg-2); color: #fff; text-decoration: none; border: 1px solid var(--line); }
+.ig-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.ig-card:hover img, .ig-card:focus-visible img { transform: scale(1.04); }
+.ig-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.15) 45%, rgba(0,0,0,0) 65%); }
+.ig-meta { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 16px; display: grid; gap: 6px; }
+.ig-meta .when { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+.ig-meta .cap { font-weight: 600; font-size: 15px; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.ig-meta .see { font-size: 13px; color: rgba(255,255,255,.85); }
+.ig-badge { position: absolute; top: 12px; right: 12px; z-index: 1; width: 30px; height: 30px; border-radius: 50%; background: rgba(0,0,0,.45); display: grid; place-items: center; }
+@media (max-width: 600px) { .ig-row { grid-auto-columns: 72%; } }
+@media (prefers-reduced-motion: reduce) { .ig-card img { transition: none; } }
 @media (prefers-reduced-motion: reduce) { .zone { transition: none; } }
 </style>
 <style>html{scroll-behavior:smooth}body{margin:0}img{max-width:100%}#email-link{color:inherit;text-decoration:none}</style>
@@ -533,6 +548,19 @@ h3.d.sub { margin-top: 40px; font-size: 22px; }
       <figure class="photo tall"><img src="images/hungaroring-walk.jpg" loading="lazy" decoding="async" alt="Archie Owen walking to the podium at the Hungaroring" style="object-position:55% 50%"><figcaption>Heading to the rookie podium</figcaption></figure>
       <figure class="photo tall"><img src="images/helmet-visor.jpg" loading="lazy" decoding="async" alt="Archie Owen in his red and white helmet, fastening his strap" style="object-position:55% 45%"><figcaption>Helmet on, ready to go</figcaption></figure>
     </div>
+  </div>
+</section>
+
+<section id="instagram" class="ig" hidden>
+  <div class="wrap pad">
+    <div class="ig-head">
+      <div>
+        <h2>Latest from Instagram</h2>
+        <p class="lede">Race weekends as they happen, straight from Archie&rsquo;s feed.</p>
+      </div>
+      <a class="btn ig-follow" href="https://www.instagram.com/archieowenracing/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>Follow @archieowenracing</span></a>
+    </div>
+    <div class="ig-row" id="ig-row" tabindex="0" aria-label="Recent Instagram posts"></div>
   </div>
 </section>
 
@@ -1006,6 +1034,43 @@ co.addEventListener("submit", async e => {
   url.searchParams.set("client_reference_id", ref);
   location.href = url.toString();
 });
+
+/* ---------- Latest from Instagram (Behold feed, refreshes automatically) ---------- */
+(() => {
+  const FEED = "https://feeds.behold.so/eSveVoNlOfMUAR2yvFhs";
+  const section = document.getElementById("instagram");
+  const row = document.getElementById("ig-row");
+  const esc = t => String(t ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const headline = cap => {
+    const first = String(cap || "").split("\n").map(l => l.trim()).find(l => l) || "";
+    const NAMES = { f4_saudiarabia: "Saudi F4", bah_int_circuit: "Bahrain International Circuit", britishf4: "British F4",
+      silverstonecircuit: "Silverstone", hitechgp: "Hitech", "7.23racing": "7.23 Racing", britishkartchampionships: "the British Kart Championships",
+      f4cezchampionship: "F4 CEZ", hungaroring_official: "the Hungaroring", "premium.karting": "Premium Karting" };
+    const clean = first.replace(/@([A-Za-z0-9_.]+?)(?=[.,!?]?(\s|$))/g, (m, h) => NAMES[h.toLowerCase()] || m);
+    return clean.length > 110 ? clean.slice(0, 107).trimEnd() + "…" : clean;
+  };
+  const date = iso => new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+  const icon = type => type === "VIDEO"
+    ? '<svg viewBox="0 0 24 24" width="14" height="14" fill="#fff"><path d="M8 5v14l11-7z"/></svg>'
+    : type === "CAROUSEL_ALBUM"
+    ? '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2"><rect x="7" y="7" width="13" height="13" rx="2"/><path d="M4 16V6a2 2 0 0 1 2-2h10"/></svg>'
+    : "";
+  fetch(FEED).then(r => r.ok ? r.json() : Promise.reject()).then(feed => {
+    const posts = (feed.posts || []).slice(0, 8);
+    if (!posts.length) return;
+    row.innerHTML = posts.map(p => {
+      const img = (p.sizes && (p.sizes.medium || p.sizes.small) || {}).mediaUrl || p.thumbnailUrl || p.mediaUrl;
+      const badge = icon(p.mediaType);
+      return '<a class="ig-card" href="' + esc(p.permalink) + '" target="_blank" rel="noopener">' +
+        '<img src="' + esc(img) + '" alt="' + esc(headline(p.caption) || "Instagram post") + '" loading="lazy" decoding="async">' +
+        (badge ? '<span class="ig-badge" aria-hidden="true">' + badge + "</span>" : "") +
+        '<span class="ig-meta"><span class="when">' + esc(date(p.timestamp)) + "</span>" +
+        '<span class="cap">' + esc(headline(p.caption)) + "</span>" +
+        '<span class="see">See the post on Instagram</span></span></a>';
+    }).join("");
+    section.hidden = false;
+  }).catch(() => {});
+})();
 
 const copyBtn = document.getElementById("copy");
 copyBtn.addEventListener("click", () => {
