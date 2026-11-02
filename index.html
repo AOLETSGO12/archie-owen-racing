@@ -128,6 +128,9 @@ td.res.win { color: var(--red-hi); }
 .tabs button[aria-selected="true"] { background: var(--red); color: var(--fg); }
 .options { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; font-size: 14px; color: var(--muted); }
 .options[hidden] { display: none; }
+.options button:disabled { opacity: .4; cursor: not-allowed; text-decoration: line-through; }
+.opt-note { flex-basis: 100%; font-size: 13px; color: var(--faint); }
+.opt-note[hidden] { display: none; }
 .options button { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font: inherit; font-weight: 600; cursor: pointer; background: transparent; color: var(--muted); }
 .options button[aria-pressed="true"] { border-color: var(--red); color: var(--fg); background: rgba(225,29,46,.18); }
 .figs { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 28px; align-items: end; margin-top: 32px; }
@@ -605,7 +608,7 @@ h3.d.sub { margin-top: 40px; font-size: 22px; }
         <p class="lead-sub" style="margin-top:12px;font-weight:500">Every partnership is confirmed with a signed sponsorship agreement.</p>
       </div>
       <ul>
-        <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Large logo on the sidepods or engine cover (your choice)</li>
+        <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Large logo on the sidepods or engine cover (your choice, wherever the championship&rsquo;s own partners aren&rsquo;t placed)</li>
         <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Helmet visor strip and a logo on the chest of the race suit</li>
         <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>An agreed number of branded videos and posts, plus photography you can use</li>
         <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Race hospitality and meet-and-greet for your guests, subject to team arrangements</li>
@@ -714,10 +717,18 @@ h3.d.sub { margin-top: 40px; font-size: 22px; }
         <button id="tab-partner" role="tab" aria-selected="false" data-tier="partner">Partner</button>
         <button id="tab-principal" role="tab" aria-selected="true" data-tier="principal">Principal Partner</button>
       </div>
+      <div class="options" id="champ-options">
+        <span>Championship:</span>
+        <button type="button" aria-pressed="true" data-champ="british">British F4</button>
+        <button type="button" aria-pressed="false" data-champ="saudi">Saudi F4</button>
+        <button type="button" aria-pressed="false" data-champ="ft4">FT4</button>
+        <button type="button" aria-pressed="false" data-champ="cez">F4 CEZ</button>
+      </div>
       <div class="options" id="principal-options">
         <span>Main car logo:</span>
         <button id="opt-side" type="button" aria-pressed="true" data-choice="carSide">Sidepods</button>
         <button id="opt-cover" type="button" aria-pressed="false" data-choice="carCover">Engine cover</button>
+        <span class="opt-note" id="cover-note" hidden>The engine cover carries the championship partner in Saudi F4, so it isn&rsquo;t available there.</span>
       </div>
       <div class="options" id="partner-options" hidden>
         <span>Car logo position:</span>
@@ -851,11 +862,21 @@ let carChoice = "carSide";
 const pOptions = document.getElementById("partner-options");
 const pChoices = pOptions.querySelectorAll("button");
 let partnerChoice = "carNose";
+/* Positions taken by championship sponsors in each series (the logo can't go there). */
+const CHAMP_RESERVED = { saudi: ["carCover"] };
+const cChoices = document.querySelectorAll("#champ-options button");
+const coverNote = document.getElementById("cover-note");
+let champ = "british";
 const suitChoice = "suitChest";
 function show() {
   tabs.forEach(b => b.setAttribute("aria-selected", String(b.dataset.tier === tier)));
   options.hidden = tier !== "principal";
   pOptions.hidden = tier !== "partner";
+  const reserved = CHAMP_RESERVED[champ] || [];
+  if (reserved.includes(carChoice)) carChoice = "carSide";
+  cChoices.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.champ === champ)));
+  choices.forEach(b => { b.disabled = reserved.includes(b.dataset.choice); });
+  coverNote.hidden = !(tier === "principal" && reserved.includes("carCover"));
   choices.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.choice === carChoice)));
   pChoices.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.pchoice === partnerChoice)));
   const on = [suitChoice, ...(tier === "principal" ? [...ZONES.principal, carChoice]
@@ -865,6 +886,7 @@ function show() {
 tabs.forEach(b => b.addEventListener("click", () => { tier = b.dataset.tier; show(); }));
 choices.forEach(b => b.addEventListener("click", () => { carChoice = b.dataset.choice; show(); }));
 pChoices.forEach(b => b.addEventListener("click", () => { partnerChoice = b.dataset.pchoice; show(); }));
+cChoices.forEach(b => b.addEventListener("click", () => { champ = b.dataset.champ; show(); }));
 show();
 
 document.querySelectorAll("[data-package]").forEach(b => b.addEventListener("click", () => {
