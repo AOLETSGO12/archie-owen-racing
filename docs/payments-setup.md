@@ -59,13 +59,15 @@ Three forms will appear:
 
 Forms → Form notifications → **Email notification** → archie@archieowenracing.com, for all three.
 
-## 5. Automatic welcome email (Zapier, free plan)
-1. https://zapier.com → Create Zap.
-2. Trigger: **Stripe → New Payment** (or "Checkout Session Completed"). Connect the Stripe account.
-3. Action: **Zoho Mail → Send Email** from archie@archieowenracing.com.
-   - To: the customer email from the Stripe trigger.
-   - Subject and body: copy from `welcome-email.md`, inserting the product name and amount fields.
-4. Test with a real £1 test product in Stripe *test mode* first, then switch the Zap to live.
+## 5. Automatic welcome email (built in)
+The Stripe webhook (`netlify/functions/stripe-webhook.mjs`) sends the sponsor's welcome email
+and a "New sponsor" notice to archie@archieowenracing.com straight after each payment, through
+Zoho Mail. It needs two Netlify environment variables:
+- `ZOHO_SMTP_USER` = `archie@archieowenracing.com`
+- `ZOHO_SMTP_PASS` = a Zoho app password (accounts.zoho.uk → Security → App Passwords),
+  marked "Contains secret values".
+Without them the payment still works and the spot is still marked sold; only the email is skipped.
+If an email fails, it shows in Netlify → Logs → Functions → stripe-webhook.
 
 ## 6. Live "sold" spots (automatic)
 The checkout hides any logo position that has already been bought, per championship.
