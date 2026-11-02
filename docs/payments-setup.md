@@ -1,6 +1,8 @@
 # Online sponsorship payments: setup (for James)
 
-**Status (30 Oct 2026):** the Stripe account (Owen Motorsport Ltd) is connected and all 10
+**Status (2 Nov 2026):** site now deploys from AOLETSGO12/archie-owen-racing (`main` = live, `preview` = result updates).
+
+**Earlier status (30 Oct 2026):** the Stripe account (Owen Motorsport Ltd) is connected and all 10
 payment links below were created and added to the website. Remaining: set the Terms of service
 URL in Stripe, Netlify Forms, the webhook (step 6) and the welcome email (step 5).
 
