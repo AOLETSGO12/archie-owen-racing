@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Welcome aboard · Archie Owen Racing</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Barlow:wght@400;600;700&display=swap">
+<style>
+:root { color-scheme: dark; --bg:#0b0b0e; --fg:#f4f4f6; --muted:rgba(244,244,246,.7); --line:rgba(244,244,246,.14); --red:#e11d2e; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 "Barlow", Arial, sans-serif; }
+main { max-width: 760px; margin: 0 auto; padding: 48px max(20px, env(safe-area-inset-left, 0px)) 72px; }
+.back { color: var(--muted); text-decoration: none; font-weight: 600; }
+h1 { font: 800 clamp(38px, 7vw, 56px)/1 "Barlow Condensed", "Arial Narrow", sans-serif; text-transform: uppercase; margin: 24px 0 8px; text-wrap: balance; }
+h2 { font: 800 24px/1.1 "Barlow Condensed", "Arial Narrow", sans-serif; text-transform: uppercase; margin: 36px 0 8px; }
+p, li { color: var(--muted); }
+strong { color: var(--fg); }
+a { color: var(--fg); }
+ol, ul { padding-left: 22px; }
+.card { border: 1px solid var(--line); border-radius: 16px; padding: 22px; margin-top: 24px; background: rgba(244,244,246,.03); }
+form { display: grid; gap: 14px; margin-top: 16px; }
+label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; color: var(--muted); }
+input, textarea { font: inherit; font-size: 16px; color: var(--fg); background: rgba(244,244,246,.05); border: 1px solid var(--line); border-radius: 10px; padding: 11px 12px; width: 100%; }
+button, .btn { justify-self: start; display: inline-block; background: var(--red); color: #fff; border: 0; font: inherit; font-weight: 600; padding: 12px 22px; border-radius: 999px; cursor: pointer; text-decoration: none; }
+.hp { position: absolute; left: -9999px; }
+.ask { margin-top: 32px; color: var(--fg); }
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="/"><img src="/images/logo-40.svg" alt="" style="height:22px;vertical-align:-4px;margin-right:8px">Archie Owen Racing</a>
+
+<h1>Welcome aboard</h1>
+<p><strong>Thank you for sponsoring Archie.</strong> Your payment has gone through, and your receipt and welcome email are on their way to the address you entered.</p>
+
+<div class="card">
+<h2 style="margin-top:0">Next: send us your logo</h2>
+<p>Upload your logo so we can send it to Hitech and the championship for approval. Vector files (SVG, EPS, AI or PDF) work best; a high-resolution PNG is fine too.</p>
+<form name="sponsor-logo" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="company-website" enctype="multipart/form-data">
+  <input type="hidden" name="form-name" value="sponsor-logo">
+  <p class="hp"><label>Leave this empty <input name="company-website" tabindex="-1" autocomplete="off"></label></p>
+  <label for="l-company">Company<input id="l-company" name="company" required autocomplete="organization"></label>
+  <label for="l-email">Email you paid with<input id="l-email" name="email" type="email" required autocomplete="email"></label>
+  <label for="l-file">Logo file (up to 8 MB)<input id="l-file" name="logo" type="file" required accept=".svg,.eps,.ai,.pdf,.png,.jpg,.jpeg"></label>
+  <label for="l-notes">Anything we should know? (brand colours, which version to use)<textarea id="l-notes" name="notes" rows="3"></textarea></label>
+  <button type="submit">Upload logo</button>
+</form>
+</div>
+
+<h2>What happens next</h2>
+<ol>
+<li>Within 7 days: we send your logo to Hitech and the championship for approval.</li>
+<li>Once approved, your branding is produced and applied to the car, helmet or suit as agreed.</li>
+<li>At least 14 days before your chosen race, we confirm your guest arrangements.</li>
+<li>Through the season: partner content and race photography for you to share.</li>
+</ol>
+
+<p class="ask">If you have any further questions, email <a href="mailto:archie@archieowenracing.com">archie@archieowenracing.com</a>.</p>
+</main>
+</body>
+</html>

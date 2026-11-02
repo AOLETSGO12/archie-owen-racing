@@ -1,0 +1,23 @@
+# Static site plus two small Netlify Functions (live sponsor availability + Stripe webhook).
+[build]
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/sold.json"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+# Keep internal docs off the public site.
+[[redirects]]
+  from = "/docs/*"
+  to = "/404.html"
+  status = 404
+  force = true
