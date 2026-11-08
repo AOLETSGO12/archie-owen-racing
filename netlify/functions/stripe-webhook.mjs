@@ -1,6 +1,6 @@
 // POST /.netlify/functions/stripe-webhook
 // Stripe calls this after each successful payment. The checkout puts the championship and the
-// branding slots it bought into client_reference_id, e.g. "british_partner_carnose-suitchest_k3x9",
+// branding slots it bought into client_reference_id, e.g. "british_partner_carnose_k3x9",
 // and this marks those slots as sold so the website stops offering them. It also sends the
 // sponsor's welcome email and a notice to Archie's inbox (see lib/welcome-email.mjs).
 import crypto from "node:crypto";
