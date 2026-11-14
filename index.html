@@ -153,8 +153,8 @@ td.res.win { color: var(--red-hi); }
 .k-line { fill: none; stroke: #8e8e9c; stroke-width: 1.6; stroke-linecap: round; }
 .k-stripe { fill: none; stroke: #8e8e9c; stroke-width: 5; stroke-linecap: round; }
 .kitart .zone { stroke-width: 2.5; }
-.carwrap img { display: block; width: 100%; height: auto; }
-.carwrap svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.carwrap img { display: block; width: 100%; height: auto; aspect-ratio: 1400 / 296; }
+.carwrap svg { position: absolute; inset: 0; width: 100%; height: 100%; background: transparent; }
 .carwrap .zone { stroke-width: 3; }
 .figs { grid-template-columns: 1fr 1fr !important; }
 .figs figure:first-child { grid-column: 1 / -1; }
@@ -760,7 +760,6 @@ h3.d.sub { margin-top: 40px; font-size: 22px; }
         <span>Main car logo:</span>
         <button id="opt-side" type="button" aria-pressed="true" data-choice="carSide">Sidepods</button>
         <button id="opt-cover" type="button" aria-pressed="false" data-choice="carCover">Engine cover</button>
-        <span class="opt-note" id="cover-note" hidden>The engine cover carries the championship partner in Saudi F4, so it isn&rsquo;t available there.</span>
       </div>
       <div class="options" id="partner-options" hidden>
         <span>Car logo position:</span>
@@ -771,7 +770,7 @@ h3.d.sub { margin-top: 40px; font-size: 22px; }
       <div class="figs">
         <figure>
           <div class="carwrap">
-            <img src="images/car-side.png" alt="Side view of Archie's Tatuus F4 car" width="1400" height="296" loading="lazy">
+            <img src="images/car-side.png" alt="Side view of Archie's Tatuus F4 car" width="1400" height="296" decoding="async">
             <svg viewBox="0 0 1400 296" aria-label="Car branding zones" preserveAspectRatio="none">
               <!-- available to Archie's partners -->
               <path class="zone" data-zone="carNose" d="M165 192 L255 160 L260 182 L172 214 Z"/>
@@ -894,9 +893,8 @@ const pOptions = document.getElementById("partner-options");
 const pChoices = pOptions.querySelectorAll("button");
 let partnerChoice = "carNose";
 /* Positions taken by championship sponsors in each series (the logo can't go there). */
-const CHAMP_RESERVED = { saudi: ["carCover"] };
+const CHAMP_RESERVED = {};
 const cChoices = document.querySelectorAll("#champ-options button");
-const coverNote = document.getElementById("cover-note");
 let champ = "british";
 const suitChoice = "suitChest";
 function show() {
@@ -907,7 +905,6 @@ function show() {
   if (reserved.includes(carChoice)) carChoice = "carSide";
   cChoices.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.champ === champ)));
   choices.forEach(b => { b.disabled = reserved.includes(b.dataset.choice); });
-  coverNote.hidden = !(tier === "principal" && reserved.includes("carCover"));
   choices.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.choice === carChoice)));
   pChoices.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.pchoice === partnerChoice)));
   const on = [suitChoice, ...(tier === "principal" ? [...ZONES.principal, carChoice]
