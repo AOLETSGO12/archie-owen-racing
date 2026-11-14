@@ -156,6 +156,11 @@ td.res.win { color: var(--red-hi); }
 .carwrap img { display: block; width: 100%; height: auto; }
 .carwrap svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .carwrap .zone { stroke-width: 3; }
+/* Championship sticker, shown only for Saudi F4. Neutral, so it isn't read as a sponsor zone. */
+.aramco-mark { display: none; pointer-events: none; }
+.carwrap.is-saudi .aramco-mark { display: block; }
+.aramco-mark rect { fill: #d8d8e0; stroke: #2c2c34; }
+.aramco-mark text { fill: #16161c; font-family: "Barlow Condensed", "Arial Narrow", sans-serif; font-weight: 800; text-rendering: geometricPrecision; -webkit-font-smoothing: antialiased; }
 .figs { grid-template-columns: 1fr 1fr !important; }
 .figs figure:first-child { grid-column: 1 / -1; }
 .key { margin-top: 20px; font-size: 14px; color: var(--muted); }
@@ -760,7 +765,7 @@ h3.d.sub { margin-top: 40px; font-size: 22px; }
         <span>Main car logo:</span>
         <button id="opt-side" type="button" aria-pressed="true" data-choice="carSide">Sidepods</button>
         <button id="opt-cover" type="button" aria-pressed="false" data-choice="carCover">Engine cover</button>
-        <span class="opt-note" id="cover-note" hidden>The engine cover carries the championship partner in Saudi F4, so it isn&rsquo;t available there.</span>
+        <span class="opt-note" id="cover-note" hidden>In Saudi F4 the only sticker near the engine cover is the Aramco sign just below the halo, so the engine cover isn&rsquo;t available there.</span>
       </div>
       <div class="options" id="partner-options" hidden>
         <span>Car logo position:</span>
@@ -779,6 +784,12 @@ h3.d.sub { margin-top: 40px; font-size: 22px; }
               <path class="zone" data-zone="carPod" d="M880 229 L1050 224 L1052 246 L882 251 Z"/>
               <path class="zone" data-zone="carSide" d="M852 160 L1060 148 L1080 215 L862 227 Z"/>
               <path class="zone" data-zone="carCover" d="M895 35 L1205 92 L1150 128 L890 112 Z"/>
+              <!-- Saudi F4 only: Aramco, on the bodywork just below the halo and ahead of the engine cover -->
+              <g id="aramco-mark" class="aramco-mark">
+                <title>Aramco, just below the halo</title>
+                <rect x="752" y="73" width="119" height="41"/>
+                <text x="811" y="94" font-size="16" letter-spacing="1.2" text-anchor="middle" dominant-baseline="central">ARAMCO</text>
+              </g>
             </svg>
           </div>
           <figcaption>Car</figcaption>
@@ -908,6 +919,7 @@ function show() {
   cChoices.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.champ === champ)));
   choices.forEach(b => { b.disabled = reserved.includes(b.dataset.choice); });
   coverNote.hidden = !(tier === "principal" && reserved.includes("carCover"));
+  document.querySelector(".carwrap").classList.toggle("is-saudi", champ === "saudi");
   choices.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.choice === carChoice)));
   pChoices.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.pchoice === partnerChoice)));
   const on = [suitChoice, ...(tier === "principal" ? [...ZONES.principal, carChoice]
