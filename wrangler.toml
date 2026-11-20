@@ -1,0 +1,8 @@
+# Cloudflare Pages project for archieowenracing.com (see cloudflare/README.md).
+name = "archie-owen-racing"
+pages_build_output_dir = "dist"
+compatibility_date = "2025-09-01"
+
+[[kv_namespaces]]
+binding = "SPONSORSHIP"
+id = "3b77f04b8a4e4c2ba5c59fd9d934532c"
