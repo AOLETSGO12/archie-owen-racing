@@ -1,2 +1,5 @@
 node_modules/
 .netlify/
+dist/
+.wrangler/
+.dev.vars
