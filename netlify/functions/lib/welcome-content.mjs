@@ -41,10 +41,9 @@ export function buildEmails(info) {
   const first = (info.name || "").split(" ")[0] || "there";
   const title = `${info.packageName} – ${info.championship}`;
   const steps = [
-    "<strong>Your sponsorship agreement:</strong> within 2 working days we&rsquo;ll email it to you to sign. It confirms your package, race and logo position.",
+    "<strong>Your sponsorship agreement:</strong> within 2 working days we&rsquo;ll email it to you to sign. It confirms your package, championship and logo position.",
     '<strong>Send us your logo</strong> (if you haven&rsquo;t already) at <a href="https://archieowenracing.com/welcome.html">archieowenracing.com/welcome.html</a>. Vector files (SVG, EPS, AI or PDF) are best.',
     "<strong>Approval:</strong> within 7 days we&rsquo;ll send your logo to Hitech and the championship for approval.",
-    "<strong>Your race:</strong> at least 14 days before the race you chose, we&rsquo;ll confirm guest arrangements.",
     "<strong>Through the season:</strong> we&rsquo;ll share partner content and race photography for you to use.",
   ];
   const html = `<div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.55;color:#111;max-width:600px">
@@ -54,7 +53,7 @@ export function buildEmails(info) {
 <ul>${info.positions.map(p => `<li>${esc(p)}</li>`).join("")}</ul>
 <p><strong>What happens next</strong></p>
 <ol>${steps.map(s => `<li style="margin-bottom:6px">${s}</li>`).join("")}</ol>
-<p>Full terms: <a href="https://archieowenracing.com/terms.html">archieowenracing.com/terms.html</a></p>
+<p>Package prices exclude VAT, which is added at the prevailing rate. Owen Motorsport Ltd VAT number GB454944562. Full terms: <a href="https://archieowenracing.com/terms.html">archieowenracing.com/terms.html</a></p>
 <p>If you have any further questions, email <a href="mailto:archie@archieowenracing.com">archie@archieowenracing.com</a>.</p>
 <p>Thanks again for backing Archie,<br>Archie Owen Racing</p>
 <table cellpadding="0" cellspacing="0" style="margin-top:18px;border-collapse:collapse"><tr>
@@ -69,8 +68,8 @@ export function buildEmails(info) {
     "1. Your sponsorship agreement: within 2 working days we'll email it to you to sign.",
     "2. Send us your logo (if you haven't already): https://archieowenracing.com/welcome.html",
     "3. Approval: within 7 days we'll send your logo to Hitech and the championship.",
-    "4. Your race: at least 14 days before, we'll confirm guest arrangements.",
-    "5. Through the season: partner content and race photography for you to use.", "",
+    "4. Through the season: partner content and race photography for you to use.", "",
+    "Package prices exclude VAT, which is added at the prevailing rate. Owen Motorsport Ltd VAT number GB454944562.",
     "Full terms: https://archieowenracing.com/terms.html",
     "If you have any further questions, email archie@archieowenracing.com.", "",
     "Thanks again for backing Archie,", "Archie Owen Racing",
@@ -79,7 +78,6 @@ export function buildEmails(info) {
     `New online sponsor: ${info.company || info.name || info.email}`, "",
     `Package: ${title}`, `Paid: ${info.amount}`, `Name: ${info.name}`, `Company: ${info.company}`, `Email: ${info.email}`,
     `Logo positions: ${info.positions.join("; ")}`, `Stripe checkout: ${info.sessionId}`, "",
-    "Their chosen race is in the Netlify Forms 'sponsor-checkout' submission.",
     "Next: send the sponsorship agreement within 2 working days.",
   ].join("\n");
   return {
