@@ -26,7 +26,7 @@ Dashboard → Product catalogue → Add product (one per line below), then Payme
 | `partner|saudi`           | Partner – Saudi F4, rest of 2026       | £5,000 + VAT | 3                 |
 | `partner|ft4`             | Partner – FT4 Winter Series 2027       | £3,500 + VAT | 3                 |
 | `partner|cez`            | Partner – F4 CEZ Championship 2027     | £5,000 + VAT | 3                 |
-| `partner|full`            | Partner – Full 2027 programme          | £13,000 + VAT | 3                 |
+| `partner|full`            | Partner – Full 2027 programme          | £12,000 + VAT | 3                 |
 | `supporter|british`       | Supporter – British F4 2027            | £2,000 + VAT | 3                 |
 | `supporter|saudi`         | Supporter – Saudi F4, rest of 2026     | £1,000 + VAT | 3                 |
 | `supporter|ft4`           | Supporter – FT4 Winter Series 2027     | £750 + VAT | 3                 |
