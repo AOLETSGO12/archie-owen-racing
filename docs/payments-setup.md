@@ -6,6 +6,7 @@
 payment links below were created and added to the website. Remaining: set the Terms of service
 URL in Stripe, Netlify Forms, the webhook (step 6) and the welcome email (step 5).
 
+Advertised prices are plus VAT at the prevailing rate. The Stripe Payment Links listed below still charge the figures as they were set up (the amounts without VAT added). Card checkout will not add VAT until those Stripe prices are changed, which needs Archie’s approval. Do not change Stripe prices in this update.
 
 The website already has the checkout built. It needs **10 Stripe Payment Links** pasted in, and one
 Zapier automation for the welcome email. About 30 minutes in total.
@@ -21,16 +22,16 @@ Dashboard → Product catalogue → Add product (one per line below), then Payme
 
 | Key in website            | Product name                           | Price   | Limit payments to |
 |---------------------------|----------------------------------------|---------|-------------------|
-| `partner|british`         | Partner – British F4 2027              | £8,000  | 3                 |
-| `partner|saudi`           | Partner – Saudi F4, rest of 2026       | £5,000  | 3                 |
-| `partner|ft4`             | Partner – FT4 Winter Series 2027       | £3,500  | 3                 |
-| `partner|cez`            | Partner – F4 CEZ Championship 2027     | £5,000  | 3                 |
-| `partner|full`            | Partner – Full 2027 programme          | £13,000 | 3                 |
-| `supporter|british`       | Supporter – British F4 2027            | £2,000  | 3                 |
-| `supporter|saudi`         | Supporter – Saudi F4, rest of 2026     | £1,000  | 3                 |
-| `supporter|ft4`           | Supporter – FT4 Winter Series 2027     | £750    | 3                 |
-| `supporter|cez`          | Supporter – F4 CEZ Championship 2027   | £1,000  | 3                 |
-| `supporter|full`          | Supporter – Full 2027 programme        | £3,000  | 3                 |
+| `partner|british`         | Partner – British F4 2027              | £8,000 + VAT | 3                 |
+| `partner|saudi`           | Partner – Saudi F4, rest of 2026       | £5,000 + VAT | 3                 |
+| `partner|ft4`             | Partner – FT4 Winter Series 2027       | £3,500 + VAT | 3                 |
+| `partner|cez`            | Partner – F4 CEZ Championship 2027     | £5,000 + VAT | 3                 |
+| `partner|full`            | Partner – Full 2027 programme          | £13,000 + VAT | 3                 |
+| `supporter|british`       | Supporter – British F4 2027            | £2,000 + VAT | 3                 |
+| `supporter|saudi`         | Supporter – Saudi F4, rest of 2026     | £1,000 + VAT | 3                 |
+| `supporter|ft4`           | Supporter – FT4 Winter Series 2027     | £750 + VAT | 3                 |
+| `supporter|cez`          | Supporter – F4 CEZ Championship 2027   | £1,000 + VAT | 3                 |
+| `supporter|full`          | Supporter – Full 2027 programme        | £3,000 + VAT | 3                 |
 
 There are three Partner car positions (front of the nose, behind the front wheel, black lower sidepod panel), each for a different brand, so each Partner link sells up to three times. The website itself tracks
 every individual spot (see step 6); these limits are a backstop.
@@ -52,7 +53,7 @@ empty shows "Online payment coming soon" instead of a pay button.
 ## 4. Turn on Netlify Forms
 Netlify → your site → **Forms** → **Enable form detection**, then upload the site again.
 Three forms will appear:
-- `sponsor-checkout`: every buyer's package, championship, race and logo position
+- `sponsor-checkout`: every buyer's package, championship and logo position
   (saved just before they're sent to Stripe).
 - `sponsor-logo`: logo uploads from the welcome page.
 - `partnership-enquiry`: general enquiries.
