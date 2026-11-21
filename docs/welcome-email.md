@@ -1,5 +1,7 @@
 # Welcome email (sent automatically after payment)
 
+The email quotes the amount Stripe actually charged. Advertised package prices on the website are plus VAT; the Payment Links still charge the pre-VAT totals until Stripe prices are updated (needs Archie’s approval).
+
 **Subject:** Welcome to Archie Owen Racing – your {{Product name}} sponsorship
 
 Hi {{Customer name}},
@@ -15,7 +17,7 @@ received, and your Stripe receipt is in a separate email.
 3. **Approval:** within 7 days we'll send your logo to Hitech and the championship for approval.
 4. **Through the season:** we'll share partner content and race photography for you to use.
 
-Your package, championship and logo position are as you selected at checkout. Full terms:
+Your package, championship and logo position are as you selected at checkout. Package prices exclude VAT, which is added at the prevailing rate. Owen Motorsport Ltd VAT number GB454944562. Full terms:
 https://archieowenracing.com/terms.html
 
 If you have any further questions, email archie@archieowenracing.com.

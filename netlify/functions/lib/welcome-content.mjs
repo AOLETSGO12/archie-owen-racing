@@ -53,7 +53,7 @@ export function buildEmails(info) {
 <ul>${info.positions.map(p => `<li>${esc(p)}</li>`).join("")}</ul>
 <p><strong>What happens next</strong></p>
 <ol>${steps.map(s => `<li style="margin-bottom:6px">${s}</li>`).join("")}</ol>
-<p>Full terms: <a href="https://archieowenracing.com/terms.html">archieowenracing.com/terms.html</a></p>
+<p>Package prices exclude VAT, which is added at the prevailing rate. Owen Motorsport Ltd VAT number GB454944562. Full terms: <a href="https://archieowenracing.com/terms.html">archieowenracing.com/terms.html</a></p>
 <p>If you have any further questions, email <a href="mailto:archie@archieowenracing.com">archie@archieowenracing.com</a>.</p>
 <p>Thanks again for backing Archie,<br>Archie Owen Racing</p>
 <table cellpadding="0" cellspacing="0" style="margin-top:18px;border-collapse:collapse"><tr>
@@ -69,6 +69,7 @@ export function buildEmails(info) {
     "2. Send us your logo (if you haven't already): https://archieowenracing.com/welcome.html",
     "3. Approval: within 7 days we'll send your logo to Hitech and the championship.",
     "4. Through the season: partner content and race photography for you to use.", "",
+    "Package prices exclude VAT, which is added at the prevailing rate. Owen Motorsport Ltd VAT number GB454944562.",
     "Full terms: https://archieowenracing.com/terms.html",
     "If you have any further questions, email archie@archieowenracing.com.", "",
     "Thanks again for backing Archie,", "Archie Owen Racing",
