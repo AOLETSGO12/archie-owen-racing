@@ -52,7 +52,7 @@ empty shows "Online payment coming soon" instead of a pay button.
 ## 4. Turn on Netlify Forms
 Netlify → your site → **Forms** → **Enable form detection**, then upload the site again.
 Three forms will appear:
-- `sponsor-checkout`: every buyer's package, championship, race and logo position
+- `sponsor-checkout`: every buyer's package, championship and logo position
   (saved just before they're sent to Stripe).
 - `sponsor-logo`: logo uploads from the welcome page.
 - `partnership-enquiry`: general enquiries.

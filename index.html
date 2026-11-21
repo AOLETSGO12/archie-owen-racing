@@ -716,7 +716,7 @@ h3.d.sub { margin-top: 40px; font-size: 22px; }
       <div class="buy-intro">
         <p class="eyebrow">Sponsor online</p>
         <h3 class="d">Ready to go? Sponsor Archie now</h3>
-        <p>Choose your package, championship, the race you&rsquo;d like to attend and where your logo goes, then pay securely by card, Apple Pay or Google Pay. You&rsquo;ll get a receipt and a welcome email with next steps straight away, followed by your sponsorship agreement to sign.</p>
+        <p>Choose your package, championship and where your logo goes, then pay securely by card, Apple Pay or Google Pay. You&rsquo;ll get a receipt and a welcome email with next steps straight away, followed by your sponsorship agreement to sign.</p>
         <p class="ask">If you have any further questions, email <a href="mailto:archie@archieowenracing.com">archie@archieowenracing.com</a>.</p>
         <p class="small">Principal Partner is tailored to each business, so it&rsquo;s arranged by proposal rather than online.</p>
       </div>
@@ -734,10 +734,7 @@ h3.d.sub { margin-top: 40px; font-size: 22px; }
         <label for="c-champ" class="full">2. Championship
           <select id="c-champ" name="championship"></select>
         </label>
-        <label for="c-race">3. Race you&rsquo;d like to attend
-          <select id="c-race" name="race"></select>
-        </label>
-        <label for="c-place">4. Where your logo goes
+        <label for="c-place" class="full">3. Where your logo goes
           <select id="c-place" name="placement"></select>
         </label>
         <p class="includes full" id="c-includes"></p>
@@ -953,19 +950,12 @@ const PAYMENT_LINKS = {
 };
 const CHAMPS = {
   british: { name: "British F4 2027 (with Hitech)", price: { partner: 8000, supporter: 2000 },
-    races: ["Donington Park National · 10–11 Apr 2027", "Brands Hatch Indy · 8–9 May 2027", "Silverstone GP · 14–16 May 2027",
-            "Snetterton 300 · 29–30 May 2027", "Oulton Park Island · 12–13 Jun 2027", "Spa-Francorchamps · 23–25 Jul 2027",
-            "Croft · 14–15 Aug 2027", "Donington Park GP · 11–12 Sep 2027", "Silverstone National · 25–26 Sep 2027", "Brands Hatch GP · 8–9 Oct 2027"],
     note: "Calendar announced 4 November 2026 by the Wera Tools F4 British Championship, certified by FIA." },
-  saudi: { name: "Saudi F4, rest of 2026", price: { partner: 5000, supporter: 1000 },
-    races: [["Lusail · 7–9 Dec 2026", "2026-12-07"], ["Lusail · 13–14 Dec 2026", "2026-12-13"]] },
-  ft4: { name: "FT4 Winter Series 2027", price: { partner: 3500, supporter: 750 },
-    races: [["Portimão · 24 Jan 2027", "2027-01-24"], ["Estoril · 30 Jan 2027", "2027-01-30"], ["Barcelona · 14 Feb 2027", "2027-02-14"], ["Valencia · 20 Feb 2027", "2027-02-20"]] },
+  saudi: { name: "Saudi F4, rest of 2026", price: { partner: 5000, supporter: 1000 } },
+  ft4: { name: "FT4 Winter Series 2027", price: { partner: 3500, supporter: 750 } },
   cez: { name: "F4 CEZ Championship 2027", price: { partner: 5000, supporter: 1000 },
-    races: ["Red Bull Ring · April 2027", "Salzburgring · May 2027", "Slovakia Ring · June 2027", "Autodrom Most · August 2027", "Brno · September 2027", "Hungaroring · October 2027"],
     note: "F4 CEZ dates are based on the 2026 calendar and are confirmed when the championship publishes them." },
-  full: { name: "Full 2027 programme (12 months)", price: { partner: 13000, supporter: 3000 },
-    races: null, note: "Choose any one race from Saudi F4, FT4, British F4 or F4 CEZ." },
+  full: { name: "Full 2027 programme (12 months)", price: { partner: 13000, supporter: 3000 } },
 };
 const PLACEMENTS = {
   partner: { includes: "Small logo on the car in the position you choose, plus a logo on the chest of Archie's race suit and partner content on his Instagram. Up to three Partners per championship, one per car position.",
@@ -989,24 +979,14 @@ Promise.allSettled([
 const champsFor = key => key === "full" ? ["british", "saudi", "ft4", "cez"] : [key];
 const isFree = (key, opt) => champsFor(key).every(c => opt.slots.every(sl => !SOLD.has(c + ":" + sl)));
 const fmt = n => "£" + n.toLocaleString("en-GB");
-const today = new Date().toISOString().slice(0, 10);
 const co = document.getElementById("checkout");
-const cChamp = document.getElementById("c-champ"), cRace = document.getElementById("c-race"), cPlace = document.getElementById("c-place");
+const cChamp = document.getElementById("c-champ"), cPlace = document.getElementById("c-place");
 const cPay = document.getElementById("c-pay"), cPrice = document.getElementById("c-price"), cIncl = document.getElementById("c-includes");
 Object.entries(CHAMPS).forEach(([k, c]) => cChamp.add(new Option(c.name, k)));
 const pkg = () => co.querySelector("input[name=package]:checked").value.toLowerCase();
-function raceList(key) {
-  if (key !== "full") {
-    const c = CHAMPS[key];
-    return c.races.map(r => Array.isArray(r) ? (r[1] >= today ? r[0] : null) : r).filter(Boolean);
-  }
-  return ["saudi", "ft4", "british", "cez"].flatMap(raceList);
-}
 function update() {
   const p = pkg(), key = cChamp.value, c = CHAMPS[key];
-  const keepRace = cRace.value, keepPlace = cPlace.value;
-  cRace.innerHTML = ""; raceList(key).forEach(r => cRace.add(new Option(r, r)));
-  if ([...cRace.options].some(o => o.value === keepRace)) cRace.value = keepRace;
+  const keepPlace = cPlace.value;
   cPlace.innerHTML = "";
   PLACEMENTS[p].options.forEach((o, n) => {
     const opt = new Option(o.label + (isFree(key, o) ? "" : " (taken)"), String(n));
@@ -1016,7 +996,7 @@ function update() {
   const free = [...cPlace.options].filter(o => !o.disabled);
   cPlace.value = free.some(o => o.value === keepPlace) ? keepPlace : (free[0]?.value ?? "");
   const soldOut = free.length === 0;
-  cIncl.textContent = PLACEMENTS[p].includes + (c.note ? " " + c.note : "") + " Hospitality is subject to team arrangements.";
+  cIncl.textContent = PLACEMENTS[p].includes + (c.note ? " " + c.note : "");
   const price = c.price[p];
   cPrice.textContent = fmt(price);
   document.getElementById("c-price-field").value = fmt(price);
