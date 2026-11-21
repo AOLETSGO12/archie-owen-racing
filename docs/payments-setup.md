@@ -6,7 +6,22 @@
 payment links below were created and added to the website. Remaining: set the Terms of service
 URL in Stripe, Netlify Forms, the webhook (step 6) and the welcome email (step 5).
 
-Advertised prices are plus VAT at the prevailing rate. The Stripe Payment Links listed below still charge the figures as they were set up (the amounts without VAT added). Card checkout will not add VAT until those Stripe prices are changed, which needs Archie’s approval. Do not change Stripe prices in this update.
+Advertised prices are plus VAT at the prevailing rate. **Since 21 Nov 2026 the website's Payment Links charge the price plus 20% VAT** (e.g. Partner British F4 £8,000 + VAT = £9,600 charged; Full 2027 programme Partner £12,000 + VAT = £14,400). Archie approved this Stripe change. Each new link uses a new one-off price on the same Stripe product and copies every setting of the old link (metadata key, terms of service, invoice creation, business name, redirect to welcome.html, inactive message). Its payment limit is the old limit minus payments already taken on the old link.
+
+The old pre-VAT links stay active until this version is live (the live site still points at them), then deactivate them in Stripe. Slot tracking and welcome emails use `client_reference_id` and the session's `amount_total`, so they work with both old and new links.
+
+| Key | Old link (pre-VAT, deactivate after go-live) | New link (charges + VAT) |
+|---|---|---|
+| `partner|british` | https://buy.stripe.com/bJedR924L3C77h13yi4c800 | https://buy.stripe.com/eVqeVd5gXdcHbxhecW4c80a |
+| `partner|saudi` | https://buy.stripe.com/14AbJ1cJp3C7fNxgl44c801 | https://buy.stripe.com/bJe3cvaBhc8D58Td8S4c80b |
+| `partner|ft4` | https://buy.stripe.com/6oU4gzfVBb4z58T1qa4c802 | https://buy.stripe.com/00w3cv38P7Sn7h18SC4c80c |
+| `partner|cez` | https://buy.stripe.com/dRmdR94cT5Kf58Tgl44c803 | https://buy.stripe.com/6oU8wP6l1egL6cXfh04c80d |
+| `partner|full` | https://buy.stripe.com/3cIdR96l12y30SD6Ku4c804 | https://buy.stripe.com/5kQ6oHgZFb4zatdd8S4c80k |
+| `supporter|british` | https://buy.stripe.com/aFa5kD24LdcH8l51qa4c805 | https://buy.stripe.com/fZueVd38P2y3bxhb0K4c80f |
+| `supporter|saudi` | https://buy.stripe.com/7sYdR98t97SngRB1qa4c806 | https://buy.stripe.com/28EcN5aBh3C7cBl2ue4c80g |
+| `supporter|ft4` | https://buy.stripe.com/aFa8wP9xd2y3fNx3yi4c807 | https://buy.stripe.com/dRmdR924L2y3eJt4Cm4c80h |
+| `supporter|cez` | https://buy.stripe.com/bJe8wP8t9c8DfNxd8S4c808 | https://buy.stripe.com/5kQcN59xd4Gb30L8SC4c80i |
+| `supporter|full` | https://buy.stripe.com/aFa6oHeRx5Kf7h15Gq4c809 | https://buy.stripe.com/8x2aEX9xd5Kfatd4Cm4c80j |
 
 The website already has the checkout built. It needs **10 Stripe Payment Links** pasted in, and one
 Zapier automation for the welcome email. About 30 minutes in total.
@@ -20,18 +35,18 @@ Zapier automation for the welcome email. About 30 minutes in total.
 ## 2. Create the 10 Payment Links
 Dashboard → Product catalogue → Add product (one per line below), then Payment Links → New.
 
-| Key in website            | Product name                           | Price   | Limit payments to |
+| Key in website            | Product name                           | Price (charged incl. VAT) | Limit payments to |
 |---------------------------|----------------------------------------|---------|-------------------|
-| `partner|british`         | Partner – British F4 2027              | £8,000 + VAT | 3                 |
-| `partner|saudi`           | Partner – Saudi F4, rest of 2026       | £5,000 + VAT | 3                 |
-| `partner|ft4`             | Partner – FT4 Winter Series 2027       | £3,500 + VAT | 3                 |
-| `partner|cez`            | Partner – F4 CEZ Championship 2027     | £5,000 + VAT | 3                 |
-| `partner|full`            | Partner – Full 2027 programme          | £12,000 + VAT | 3                 |
-| `supporter|british`       | Supporter – British F4 2027            | £2,000 + VAT | 3                 |
-| `supporter|saudi`         | Supporter – Saudi F4, rest of 2026     | £1,000 + VAT | 3                 |
-| `supporter|ft4`           | Supporter – FT4 Winter Series 2027     | £750 + VAT | 3                 |
-| `supporter|cez`          | Supporter – F4 CEZ Championship 2027   | £1,000 + VAT | 3                 |
-| `supporter|full`          | Supporter – Full 2027 programme        | £3,000 + VAT | 3                 |
+| `partner|british`         | Partner – British F4 2027              | £8,000 + VAT (£9,600) | 3                 |
+| `partner|saudi`           | Partner – Saudi F4, rest of 2026       | £5,000 + VAT (£6,000) | 3                 |
+| `partner|ft4`             | Partner – FT4 Winter Series 2027       | £3,500 + VAT (£4,200) | 3                 |
+| `partner|cez`            | Partner – F4 CEZ Championship 2027     | £5,000 + VAT (£6,000) | 3                 |
+| `partner|full`            | Partner – Full 2027 programme          | £12,000 + VAT (£14,400) | 3                 |
+| `supporter|british`       | Supporter – British F4 2027            | £2,000 + VAT (£2,400) | 3                 |
+| `supporter|saudi`         | Supporter – Saudi F4, rest of 2026     | £1,000 + VAT (£1,200) | 3                 |
+| `supporter|ft4`           | Supporter – FT4 Winter Series 2027     | £750 + VAT (£900) | 3                 |
+| `supporter|cez`          | Supporter – F4 CEZ Championship 2027   | £1,000 + VAT (£1,200) | 3                 |
+| `supporter|full`          | Supporter – Full 2027 programme        | £3,000 + VAT (£3,600) | 3                 |
 
 There are three Partner car positions (front of the nose, behind the front wheel, black lower sidepod panel), each for a different brand, so each Partner link sells up to three times. The website itself tracks
 every individual spot (see step 6); these limits are a backstop.

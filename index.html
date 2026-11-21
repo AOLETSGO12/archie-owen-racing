@@ -935,18 +935,21 @@ document.querySelectorAll("[data-package]").forEach(b => b.addEventListener("cli
 
 /* ---------- online sponsorship checkout ----------
    Paste each Stripe Payment Link below (from dashboard.stripe.com > Payment Links).
-   Leave a link as "" and that option shows "Coming soon" instead of taking payment. */
+   Leave a link as "" and that option shows "Coming soon" instead of taking payment.
+   These links charge the advertised price plus 20% VAT (created 21 Nov 2026). The earlier
+   pre-VAT links (buy.stripe.com/...4c800 to ...4c809) stay active until this version is live,
+   then get deactivated in Stripe. */
 const PAYMENT_LINKS = {
-  "partner|british":   "https://buy.stripe.com/bJedR924L3C77h13yi4c800",
-  "partner|saudi":     "https://buy.stripe.com/14AbJ1cJp3C7fNxgl44c801",
-  "partner|ft4":       "https://buy.stripe.com/6oU4gzfVBb4z58T1qa4c802",
-  "partner|cez":       "https://buy.stripe.com/dRmdR94cT5Kf58Tgl44c803",
-  "partner|full":      "https://buy.stripe.com/3cIdR96l12y30SD6Ku4c804",
-  "supporter|british": "https://buy.stripe.com/aFa5kD24LdcH8l51qa4c805",
-  "supporter|saudi":   "https://buy.stripe.com/7sYdR98t97SngRB1qa4c806",
-  "supporter|ft4":     "https://buy.stripe.com/aFa8wP9xd2y3fNx3yi4c807",
-  "supporter|cez":     "https://buy.stripe.com/bJe8wP8t9c8DfNxd8S4c808",
-  "supporter|full":    "https://buy.stripe.com/aFa6oHeRx5Kf7h15Gq4c809",
+  "partner|british":   "https://buy.stripe.com/eVqeVd5gXdcHbxhecW4c80a",
+  "partner|saudi":     "https://buy.stripe.com/bJe3cvaBhc8D58Td8S4c80b",
+  "partner|ft4":       "https://buy.stripe.com/00w3cv38P7Sn7h18SC4c80c",
+  "partner|cez":       "https://buy.stripe.com/6oU8wP6l1egL6cXfh04c80d",
+  "partner|full":      "https://buy.stripe.com/5kQ6oHgZFb4zatdd8S4c80k",
+  "supporter|british": "https://buy.stripe.com/fZueVd38P2y3bxhb0K4c80f",
+  "supporter|saudi":   "https://buy.stripe.com/28EcN5aBh3C7cBl2ue4c80g",
+  "supporter|ft4":     "https://buy.stripe.com/dRmdR924L2y3eJt4Cm4c80h",
+  "supporter|cez":     "https://buy.stripe.com/5kQcN59xd4Gb30L8SC4c80i",
+  "supporter|full":    "https://buy.stripe.com/8x2aEX9xd5Kfatd4Cm4c80j",
 };
 const CHAMPS = {
   british: { name: "British F4 2027 (with Hitech)", price: { partner: 8000, supporter: 2000 },

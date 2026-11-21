@@ -1,6 +1,6 @@
 # Welcome email (sent automatically after payment)
 
-The email quotes the amount Stripe actually charged. Advertised package prices on the website are plus VAT; the Payment Links still charge the pre-VAT totals until Stripe prices are updated (needs Archie’s approval).
+The email quotes the amount Stripe actually charged. Advertised package prices on the website are plus VAT; the website's Payment Links charge the price plus 20% VAT (since 21 Nov 2026), so the amount quoted includes VAT. Payments made on the older pre-VAT links quote the pre-VAT amount.
 
 **Subject:** Welcome to Archie Owen Racing – your {{Product name}} sponsorship
 
