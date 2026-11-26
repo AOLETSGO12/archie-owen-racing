@@ -6,8 +6,12 @@
 payment links below were created and added to the website. Remaining: set the Terms of service
 URL in Stripe, Netlify Forms, the webhook (step 6) and the welcome email (step 5).
 
+**26 Nov 2026:** the Supporter (helmet badge) package was removed from the website. The five
+Supporter Payment Links still exist in Stripe but are no longer used by the site. Do not delete
+them from Stripe unless Archie asks.
 
-The website already has the checkout built. It needs **10 Stripe Payment Links** pasted in, and one
+
+The website already has the checkout built. It needs the **5 Partner Stripe Payment Links** pasted in, and one
 Zapier automation for the welcome email. About 30 minutes in total.
 
 ## 1. Open a Stripe account (adult account holder)
@@ -16,7 +20,7 @@ Zapier automation for the welcome email. About 30 minutes in total.
 3. Settings → Business → Public details: business name "Archie Owen Racing", support email
    archie@archieowenracing.com, website https://archieowenracing.com.
 
-## 2. Create the 10 Payment Links
+## 2. Create the Partner Payment Links
 Dashboard → Product catalogue → Add product (one per line below), then Payment Links → New.
 
 | Key in website            | Product name                           | Price   | Limit payments to |
@@ -26,10 +30,16 @@ Dashboard → Product catalogue → Add product (one per line below), then Payme
 | `partner|ft4`             | Partner – FT4 Winter Series 2027       | £3,500  | 3                 |
 | `partner|cez`            | Partner – F4 CEZ Championship 2027     | £5,000  | 3                 |
 | `partner|full`            | Partner – Full 2027 programme          | £13,000 | 3                 |
+
+The following Supporter links were created in October 2026 and remain in Stripe, but are no longer
+wired into the website (helmet badges are not offered):
+
+| Key (no longer used)      | Product name                           | Price   | Limit payments to |
+|---------------------------|----------------------------------------|---------|-------------------|
 | `supporter|british`       | Supporter – British F4 2027            | £2,000  | 3                 |
 | `supporter|saudi`         | Supporter – Saudi F4, rest of 2026     | £1,000  | 3                 |
 | `supporter|ft4`           | Supporter – FT4 Winter Series 2027     | £750    | 3                 |
-| `supporter|cez`          | Supporter – F4 CEZ Championship 2027   | £1,000  | 3                 |
+| `supporter|cez`           | Supporter – F4 CEZ Championship 2027   | £1,000  | 3                 |
 | `supporter|full`          | Supporter – Full 2027 programme        | £3,000  | 3                 |
 
 There are three Partner car positions (front of the nose, behind the front wheel, black lower sidepod panel), each for a different brand, so each Partner link sells up to three times. The website itself tracks
@@ -45,7 +55,7 @@ On **every** Payment Link:
 - Settings → Emails → turn on **Successful payments** receipts.
 
 ## 3. Paste the links into the website
-Send the 10 links to Claude, or paste them yourself: in `index.html` search for
+Send the Partner links to Claude, or paste them yourself: in `index.html` search for
 `const PAYMENT_LINKS` and put each link between the quotes next to its key. Any option left
 empty shows "Online payment coming soon" instead of a pay button.
 
@@ -71,7 +81,7 @@ If an email fails, it shows in Netlify → Logs → Functions → stripe-webhook
 
 ## 6. Live "sold" spots (automatic)
 The checkout hides any logo position that has already been bought, per championship.
-The spots are: car front of nose / behind front wheel / lower sidepod panel, helmet left side / right side. Suit logos all go on the chest and aren't limited per spot.
+The spots are: car front of nose / behind front wheel / lower sidepod panel. Suit logos all go on the chest and aren't limited per spot. Helmet left/right slots are still recognised by the webhook for any historically sold Supporter spots, but are no longer offered at checkout.
 
 This needs the site deployed **from GitHub**, not by drag and drop, because it uses two small
 Netlify Functions (`netlify/functions/`):
@@ -93,8 +103,8 @@ Netlify Functions (`netlify/functions/`):
 
 **Manual fallback:** `sold.json` in the site folder is also read by the checkout. If you keep
 using drag-and-drop uploads, add sold spots there by hand, e.g.
-`"sold": ["british:carnose", "british:helmetleft"]`, and upload again.
+`"sold": ["british:carnose"]`, and upload again.
 
 ## 7. Before going live
 - Ask Dominic Stott (Hitech) to read `terms.html`, especially logo approval and banned categories.
-- Do one live test purchase on the cheapest option and refund it from the Stripe dashboard.
+- Do one live test purchase on a Partner option and refund it from the Stripe dashboard.

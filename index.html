@@ -317,7 +317,7 @@ h3.d.sub { margin-top: 40px; font-size: 22px; }
 .benefits article { border: 1px solid var(--line); border-radius: 16px; padding: 18px; background: rgba(244,244,246,.03); min-width: 0; }
 .benefits h4 { margin: 0 0 6px; font-size: 16px; }
 .benefits p { color: var(--muted); font-size: 14px; }
-.tiers.two-tier { grid-template-columns: repeat(2, 1fr); max-width: 820px; margin-top: 20px; }
+.tiers.one-tier { grid-template-columns: 1fr; max-width: 400px; margin-top: 20px; }
 .lbl-small { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); margin-top: 4px; }
 .pricebox { margin-top: 16px; }
 .pricebox td small { display: block; color: var(--faint); font-size: 12px; margin-top: 2px; }
@@ -341,7 +341,7 @@ h3.d.sub { margin-top: 40px; font-size: 22px; }
   .aud.aud-champ { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 600px) {
-  .benefits, .aud.aud-champ, .tiers.two-tier, .enquiry { grid-template-columns: 1fr; }
+  .benefits, .aud.aud-champ, .tiers.one-tier, .enquiry { grid-template-columns: 1fr; }
   .lead-offer { padding: 22px; }
   .navlinks { order: 3; width: 100%; }
   .tagline { font-size: 18px; }
@@ -667,13 +667,13 @@ h3.d.sub { margin-top: 40px; font-size: 22px; }
       <article><h4>Content</h4><p>An agreed number of branded videos and posts, plus race photography you can use in your own channels.</p></article>
       <article><h4>Customer relationships</h4><p>Race-weekend hospitality and meet-and-greet opportunities for clients, subject to team arrangements.</p></article>
       <article><h4>Employee engagement</h4><p>A company visit, Q&amp;A or simulator event with Archie for your team.</p></article>
-      <article><h4>Brand presence</h4><p>Agreed positions on the car, helmet and suit, with category exclusivity where available.</p></article>
+      <article><h4>Brand presence</h4><p>Agreed positions on the car and suit, with category exclusivity where available.</p></article>
       <article><h4>Reporting</h4><p>Quarterly reports on content delivered, reach, engagement, tracked enquiries and event attendance.</p></article>
     </div>
     <p class="note">Quantities, rights and hospitality are agreed individually with each partner and set out in a signed sponsorship agreement.</p>
 
     <h3 class="d" style="margin-top:72px">Other ways to get involved</h3>
-    <div class="tiers two-tier">
+    <div class="tiers one-tier">
       <article class="tier">
         <h3>Partner</h3>
         <p class="lbl-small">British F4 2027</p>
@@ -686,28 +686,17 @@ h3.d.sub { margin-top: 40px; font-size: 22px; }
         </ul>
         <div class="tier-actions"><a class="btn red" href="#buy" data-buy="partner">Sponsor now</a><button class="btn" type="button" data-package="Partner – British F4 2027">Ask a question</button></div>
       </article>
-      <article class="tier">
-        <h3>Supporter</h3>
-        <p class="lbl-small">British F4 2027</p>
-        <p class="price">£2,000</p>
-        <p class="pitch">An entry-level way to back a young race winner.</p>
-        <ul>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Small badge on the chest of Archie&rsquo;s race suit</li>
-          <li><svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5L8 14.5L16 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Small badge on Archie&rsquo;s helmet</li>
-        </ul>
-        <div class="tier-actions"><a class="btn red" href="#buy" data-buy="supporter">Sponsor now</a><button class="btn" type="button" data-package="Supporter – British F4 2027">Ask a question</button></div>
-      </article>
     </div>
 
     <h3 class="d" style="margin-top:56px">Other championships</h3>
     <div class="tablebox pricebox">
       <table>
-        <thead><tr><th>Programme</th><th>Status</th><th>Supporter</th><th>Partner</th><th>Principal</th></tr></thead>
+        <thead><tr><th>Programme</th><th>Status</th><th>Partner</th><th>Principal</th></tr></thead>
         <tbody>
-          <tr><td>Full 2027 programme, 12 months<small>Saudi F4, FT4, British F4 and F4 CEZ, plus testing and Instagram</small></td><td><span class="status">Part confirmed</span></td><td>£3,000</td><td>£13,000</td><td>£25,000</td></tr>
-          <tr><td>Saudi F4, rest of 2026<small>2 rounds left, December</small></td><td><span class="status now">Racing now</span></td><td>£1,000</td><td>£5,000</td><td>£10,000</td></tr>
-          <tr><td>FT4 Winter Series<small>4 rounds, Jan–Feb 2027</small></td><td><span class="status planned">Planned</span></td><td>£750</td><td>£3,500</td><td>£7,500</td></tr>
-          <tr><td>F4 CEZ Championship<small>6 rounds, Apr–Oct 2027</small></td><td><span class="status planned">Planned</span></td><td>£1,000</td><td>£5,000</td><td>£10,000</td></tr>
+          <tr><td>Full 2027 programme, 12 months<small>Saudi F4, FT4, British F4 and F4 CEZ, plus testing and Instagram</small></td><td><span class="status">Part confirmed</span></td><td>£13,000</td><td>£25,000</td></tr>
+          <tr><td>Saudi F4, rest of 2026<small>2 rounds left, December</small></td><td><span class="status now">Racing now</span></td><td>£5,000</td><td>£10,000</td></tr>
+          <tr><td>FT4 Winter Series<small>4 rounds, Jan–Feb 2027</small></td><td><span class="status planned">Planned</span></td><td>£3,500</td><td>£7,500</td></tr>
+          <tr><td>F4 CEZ Championship<small>6 rounds, Apr–Oct 2027</small></td><td><span class="status planned">Planned</span></td><td>£5,000</td><td>£10,000</td></tr>
         </tbody>
       </table>
     </div>
@@ -716,7 +705,7 @@ h3.d.sub { margin-top: 40px; font-size: 22px; }
       <div class="buy-intro">
         <p class="eyebrow">Sponsor online</p>
         <h3 class="d">Ready to go? Sponsor Archie now</h3>
-        <p>Choose your package, championship, the race you&rsquo;d like to attend and where your logo goes, then pay securely by card, Apple Pay or Google Pay. You&rsquo;ll get a receipt and a welcome email with next steps straight away, followed by your sponsorship agreement to sign.</p>
+        <p>Choose your championship, the race you&rsquo;d like to attend and where your logo goes, then pay securely by card, Apple Pay or Google Pay. You&rsquo;ll get a receipt and a welcome email with next steps straight away, followed by your sponsorship agreement to sign.</p>
         <p class="ask">If you have any further questions, email <a href="mailto:archie@archieowenracing.com">archie@archieowenracing.com</a>.</p>
         <p class="small">Principal Partner is tailored to each business, so it&rsquo;s arranged by proposal rather than online.</p>
       </div>
@@ -724,20 +713,14 @@ h3.d.sub { margin-top: 40px; font-size: 22px; }
         <input type="hidden" name="form-name" value="sponsor-checkout">
         <input type="hidden" name="price" id="c-price-field">
         <p class="hp"><label>Leave this empty <input name="company-website" tabindex="-1" autocomplete="off"></label></p>
-        <fieldset class="full">
-          <legend>1. Package</legend>
-          <div class="seg" role="radiogroup">
-            <label><input type="radio" name="package" value="Partner" checked> Partner</label>
-            <label><input type="radio" name="package" value="Supporter"> Supporter</label>
-          </div>
-        </fieldset>
-        <label for="c-champ" class="full">2. Championship
+        <input type="hidden" name="package" value="Partner">
+        <label for="c-champ" class="full">1. Championship
           <select id="c-champ" name="championship"></select>
         </label>
-        <label for="c-race">3. Race you&rsquo;d like to attend
+        <label for="c-race">2. Race you&rsquo;d like to attend
           <select id="c-race" name="race"></select>
         </label>
-        <label for="c-place">4. Where your logo goes
+        <label for="c-place">3. Where your logo goes
           <select id="c-place" name="placement"></select>
         </label>
         <p class="includes full" id="c-includes"></p>
@@ -757,7 +740,6 @@ h3.d.sub { margin-top: 40px; font-size: 22px; }
     <h3 class="d" style="margin-top:72px">Where your brand goes</h3>
     <div class="placer">
       <div class="tabs" role="tablist" aria-label="Sponsorship package">
-        <button type="button" id="tab-supporter" role="tab" aria-selected="false" data-tier="supporter">Supporter</button>
         <button type="button" id="tab-partner" role="tab" aria-selected="false" data-tier="partner">Partner</button>
         <button type="button" id="tab-principal" role="tab" aria-selected="true" data-tier="principal">Principal Partner</button>
       </div>
@@ -793,38 +775,6 @@ h3.d.sub { margin-top: 40px; font-size: 22px; }
             </svg>
           </div>
           <figcaption>Car</figcaption>
-        </figure>
-        <figure class="kit">
-          <svg class="kitart" viewBox="26 18 746 632" aria-label="Helmet branding zones">
-            <!-- Arai GP-7, side view facing right -->
-            <path class="k-body" d="M112 586 C95 575 85 552 76 532 C67 512 63 490 58 468 C53 446 50 421 48 398 C46 375 45 353 46 328 C47 303 48 276 54 250 C60 224 67 195 80 170 C93 145 110 120 130 102 C150 84 177 70 200 60 C223 50 245 45 270 40 C295 35 322 31 350 30 C378 29 412 29 440 33 C468 37 495 42 520 52 C545 62 570 75 590 90 C610 105 626 122 640 140 C654 158 664 178 672 195 C680 212 683 223 690 245 C697 267 704 300 712 328 C720 356 728 390 735 410 C742 430 752 432 756 450 C760 468 761 497 760 520 C759 543 756 573 752 590 C748 607 752 616 735 624 C718 632 682 635 650 638 C618 641 577 640 540 640 C503 640 470 640 430 636 C390 632 342 620 300 614 C258 608 211 603 180 598 C149 593 129 597 112 586 Z"/>
-            <!-- neck roll below the shell -->
-            <path class="k-roll" d="M86 524 C200 538 330 556 470 576 C580 588 680 590 754 582 C758 600 750 618 735 624 C650 638 540 640 430 636 C300 614 180 598 112 586 C100 568 92 548 86 524 Z"/>
-            <!-- top vents -->
-            <circle class="k-dark" cx="230" cy="80" r="5"/>
-            <circle class="k-dark" cx="322" cy="62" r="5"/>
-            <circle class="k-dark" cx="500" cy="86" r="5"/>
-            <!-- lower side panel and HANS post recess -->
-            <path class="k-line" d="M156 430 C210 404 270 420 330 456 C420 494 560 504 754 500"/>
-            <path class="k-panel" d="M164 430 C182 408 254 408 274 438 C290 470 274 506 232 510 C192 512 164 482 164 430 Z"/>
-            <circle class="k-panel" cx="216" cy="466" r="28"/>
-            <circle class="k-dark" cx="216" cy="466" r="11"/>
-            <!-- brow fin above the visor -->
-            <path class="k-panel" d="M332 256 L466 188 L476 198 L346 268 Z"/>
-            <!-- visor -->
-            <path class="k-visor" d="M322 290 C322 266 338 256 366 255 L690 245 L736 410 L544 420 C510 422 480 412 456 398 C398 366 324 330 322 290 Z"/>
-            <path class="k-line" d="M420 318 L702 300"/>
-            <!-- visor strip (zone sits on top) -->
-            <path class="k-panel" d="M366 255 L690 245 L699 280 L370 288 C350 286 338 276 334 266 Z"/>
-            <!-- visor pivots -->
-            <circle class="k-panel" cx="382" cy="312" r="11"/>
-            <circle class="k-panel" cx="456" cy="304" r="11"/>
-            <path class="k-dark" d="M520 430 C540 422 600 428 612 444 C618 464 590 476 560 474 C535 472 515 454 520 430 Z"/>
-            <circle class="k-panel" cx="565" cy="450" r="9"/>
-            <!-- branding zones -->
-            <circle class="zone" data-zone="helmetBadge" cx="180" cy="290" r="42"/>
-          </svg>
-          <figcaption>Helmet</figcaption>
         </figure>
         <figure class="kit">
           <svg class="kitart" viewBox="0 0 360 520" aria-label="Race suit branding zones">
@@ -870,7 +820,6 @@ h3.d.sub { margin-top: 40px; font-size: 22px; }
         <select id="f-package" name="package">
           <option>Principal Partner – British F4 2027</option>
           <option>Partner – British F4 2027</option>
-          <option>Supporter – British F4 2027</option>
           <option>Full 2027 programme</option>
           <option>Saudi F4, rest of 2026</option>
           <option>FT4 Winter Series 2027</option>
@@ -892,7 +841,6 @@ h3.d.sub { margin-top: 40px; font-size: 22px; }
 
 <script>
 const ZONES = {
-  supporter: ["helmetBadge"],
   partner: [],
   principal: [],
 };
@@ -945,35 +893,27 @@ const PAYMENT_LINKS = {
   "partner|ft4":       "https://buy.stripe.com/6oU4gzfVBb4z58T1qa4c802",
   "partner|cez":       "https://buy.stripe.com/dRmdR94cT5Kf58Tgl44c803",
   "partner|full":      "https://buy.stripe.com/3cIdR96l12y30SD6Ku4c804",
-  "supporter|british": "https://buy.stripe.com/aFa5kD24LdcH8l51qa4c805",
-  "supporter|saudi":   "https://buy.stripe.com/7sYdR98t97SngRB1qa4c806",
-  "supporter|ft4":     "https://buy.stripe.com/aFa8wP9xd2y3fNx3yi4c807",
-  "supporter|cez":     "https://buy.stripe.com/bJe8wP8t9c8DfNxd8S4c808",
-  "supporter|full":    "https://buy.stripe.com/aFa6oHeRx5Kf7h15Gq4c809",
 };
 const CHAMPS = {
-  british: { name: "British F4 2027 (with Hitech)", price: { partner: 8000, supporter: 2000 },
+  british: { name: "British F4 2027 (with Hitech)", price: { partner: 8000 },
     races: ["Donington Park National · 10–11 Apr 2027", "Brands Hatch Indy · 8–9 May 2027", "Silverstone GP · 14–16 May 2027",
             "Snetterton 300 · 29–30 May 2027", "Oulton Park Island · 12–13 Jun 2027", "Spa-Francorchamps · 23–25 Jul 2027",
             "Croft · 14–15 Aug 2027", "Donington Park GP · 11–12 Sep 2027", "Silverstone National · 25–26 Sep 2027", "Brands Hatch GP · 8–9 Oct 2027"],
     note: "Calendar announced 4 November 2026 by the Wera Tools F4 British Championship, certified by FIA." },
-  saudi: { name: "Saudi F4, rest of 2026", price: { partner: 5000, supporter: 1000 },
+  saudi: { name: "Saudi F4, rest of 2026", price: { partner: 5000 },
     races: [["Lusail · 7–9 Dec 2026", "2026-12-07"], ["Lusail · 13–14 Dec 2026", "2026-12-13"]] },
-  ft4: { name: "FT4 Winter Series 2027", price: { partner: 3500, supporter: 750 },
+  ft4: { name: "FT4 Winter Series 2027", price: { partner: 3500 },
     races: [["Portimão · 24 Jan 2027", "2027-01-24"], ["Estoril · 30 Jan 2027", "2027-01-30"], ["Barcelona · 14 Feb 2027", "2027-02-14"], ["Valencia · 20 Feb 2027", "2027-02-20"]] },
-  cez: { name: "F4 CEZ Championship 2027", price: { partner: 5000, supporter: 1000 },
+  cez: { name: "F4 CEZ Championship 2027", price: { partner: 5000 },
     races: ["Red Bull Ring · April 2027", "Salzburgring · May 2027", "Slovakia Ring · June 2027", "Autodrom Most · August 2027", "Brno · September 2027", "Hungaroring · October 2027"],
     note: "F4 CEZ dates are based on the 2026 calendar and are confirmed when the championship publishes them." },
-  full: { name: "Full 2027 programme (12 months)", price: { partner: 13000, supporter: 3000 },
+  full: { name: "Full 2027 programme (12 months)", price: { partner: 13000 },
     races: null, note: "Choose any one race from Saudi F4, FT4, British F4 or F4 CEZ." },
 };
 const PLACEMENTS = {
   partner: { includes: "Small logo on the car in the position you choose, plus a logo on the chest of Archie's race suit and partner content on his Instagram. Up to three Partners per championship, one per car position.",
     options: [["front of nose", "carnose"], ["behind front wheel", "carchassis"], ["lower sidepod", "carlowerpod"]].map(([c, ck]) =>
       ({ label: "Car: " + c + " · Suit: chest", slots: [ck] })) },
-  supporter: { includes: "Small badge on the side of Archie's helmet and a small badge on the chest of his race suit.",
-    options: [["left", "helmetleft"], ["right", "helmetright"]].map(([h, hk]) =>
-      ({ label: "Helmet: " + h + " side · Suit: chest", slots: [hk] })) },
 };
 /* Slots already sold, from the live list (Stripe webhook) plus the manual sold.json. */
 let SOLD = new Set();
@@ -994,7 +934,7 @@ const co = document.getElementById("checkout");
 const cChamp = document.getElementById("c-champ"), cRace = document.getElementById("c-race"), cPlace = document.getElementById("c-place");
 const cPay = document.getElementById("c-pay"), cPrice = document.getElementById("c-price"), cIncl = document.getElementById("c-includes");
 Object.entries(CHAMPS).forEach(([k, c]) => cChamp.add(new Option(c.name, k)));
-const pkg = () => co.querySelector("input[name=package]:checked").value.toLowerCase();
+const pkg = () => (co.querySelector("input[name=package]:checked") || co.querySelector("input[name=package]")).value.toLowerCase();
 function raceList(key) {
   if (key !== "full") {
     const c = CHAMPS[key];
@@ -1027,7 +967,6 @@ function update() {
 co.addEventListener("change", update);
 update();
 document.querySelectorAll("[data-buy]").forEach(a => a.addEventListener("click", () => {
-  co.querySelector("input[name=package][value=" + (a.dataset.buy === "partner" ? "Partner" : "Supporter") + "]").checked = true;
   cChamp.value = "british"; update();
 }));
 co.addEventListener("submit", async e => {
