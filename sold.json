@@ -1,5 +1,5 @@
 {
-  "_note": "Manual list of sold branding slots, used as well as the automatic one. Format: championship:slot. Championships: british, saudi, ft4, cez. Slots: carnose, carchassis, carlowerpod, sidepod (Principal), helmetleft, helmetright. Suit chest logos are shared and not limited here. To free a spot again after a refund, add it to \"released\".",
+  "_note": "Manual list of sold branding slots, used as well as the automatic one. Format: championship:slot. Championships: british, saudi, ft4, cez. Slots: carnose, carchassis, carlowerpod, sidepod (Principal). helmetleft and helmetright remain recognised for any historically sold Supporter spots, but helmet badges are no longer offered on the site. Suit chest logos are shared and not limited here. To free a spot again after a refund, add it to \"released\".",
   "sold": [],
   "released": []
 }
